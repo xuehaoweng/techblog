@@ -1,0 +1,10 @@
+主题文档mkdocs-material
+https://squidfunk.github.io/mkdocs-material/
+
+mkdocs中文文档
+
+https://markdown-docs-zh.readthedocs.io/zh_CN/latest/#mkdocs
+
+中文搜索
+
+https://zhuanlan.zhihu.com/p/411854801

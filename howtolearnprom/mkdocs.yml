@@ -1,0 +1,45 @@
+site_name: Prometheus Learning Path
+
+theme:
+    name: material
+    logo: assets/logo.png
+    favicon: assets/favicon.png
+    font:
+      text: Roboto
+    palette:
+      primary: indigo
+    # icon:
+    #   logo: bootstrap/envelope-paper
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - rust
+
+plugins:
+    - search:
+        lang:
+            - en
+            - ja
+        separator: '[\s\-\.]+'
+    # - social:
+    #     cards_font: Roboto
+nav:
+    # - Home: index.md
+    # - About: about.md
+    - 目录: catalogue.md
+    - 第1章 天降奇兵: 
+      - Prometheus简介: quickstart/why-monitor.md
+      - 初识Prometheus: quickstart/prometheus-quick-start.md
+      - 安装Prometheus: quickstart/install-prometheus-server.md
+      - 使用Node Exporter采集主机数据: quickstart/use-node-exporter.md
+      - 使用PromQL查询监控数据: quickstart/promql_quickstart.md
+      - 监控数据可视化: quickstart/use-grafana-create-dashboard
+      - 任务和实例: quickstart/prometheus-job-and-instance.md
+      - Prometheus核心组件: quickstart/prometheus-arch.md
+      - 小结: quickstart/SUMMARY.md
+    - 第二章 探索PromQL:
+      - 理解时间序列: promql/what-is-prometheus-metrics-and-labels.md
+    - 第3章 Prometheus告警处理:
+      - Prometheus告警简介: alert/prometheus-alert-manager-overview.md
+    - 第4章 Exporter详解:
+      - Exporter是什么: exporter/what-is-prometheus-exporter.md

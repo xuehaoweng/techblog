@@ -1,0 +1,762 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.15">
+    
+    
+      
+        <title>使用Console Template - Prometheus Learning Path</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.113286f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#console-template" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Prometheus Learning Path" class="md-header__button md-logo" aria-label="Prometheus Learning Path" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Prometheus Learning Path
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              使用Console Template
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Prometheus Learning Path" class="md-nav__button md-logo" aria-label="Prometheus Learning Path" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    Prometheus Learning Path
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../catalogue/" class="md-nav__link">
+        目录
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          第1章 天降奇兵
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          第1章 天降奇兵
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/why-monitor/" class="md-nav__link">
+        Prometheus简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/prometheus-quick-start/" class="md-nav__link">
+        初识Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/install-prometheus-server/" class="md-nav__link">
+        安装Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/use-node-exporter/" class="md-nav__link">
+        使用Node Exporter采集主机数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/promql_quickstart/" class="md-nav__link">
+        使用PromQL查询监控数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/use-grafana-create-dashboard" class="md-nav__link">
+        监控数据可视化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/prometheus-job-and-instance/" class="md-nav__link">
+        任务和实例
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/prometheus-arch/" class="md-nav__link">
+        Prometheus核心组件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/SUMMARY/" class="md-nav__link">
+        小结
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          第二章 探索PromQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          第二章 探索PromQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../promql/what-is-prometheus-metrics-and-labels/" class="md-nav__link">
+        理解时间序列
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          第3章 Prometheus告警处理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          第3章 Prometheus告警处理
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alert/prometheus-alert-manager-overview/" class="md-nav__link">
+        Prometheus告警简介
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          第4章 Exporter详解
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          第4章 Exporter详解
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exporter/what-is-prometheus-exporter/" class="md-nav__link">
+        Exporter是什么
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    快速开始
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    定义页面菜单
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    定义图表
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="console-template">使用Console Template</h1>
+<p>在第1章以及第2章的内容中，读者已经对Prometheus已经有了一个相对完成的认识，并且我们已经学习了如何通过PromQL对时间序列数据进行查询和分析，并且通过Prometheus中的Graph面板查询数据形成图表。但是缺点也很明显，这些查询结果都是临时的，无法持久化的，更别说我们想实时关注某些特定监控指标的变化趋势。</p>
+<p>为了简化这些问题Prometheus内置了一个简单的解决方案<code>Console Template</code>,它允许用户通过Go模板语言创建任意的控制台界面，并且通过Prometheus Server对外提供访问路径。</p>
+<h2 id="_1">快速开始</h2>
+<p>首先我们先从一个小例子开始，创建我们的第一个Console Template页面。与Console Template有关的两个启动参数为<code>--web.console.libraries</code>和<code>--web.console.templates</code>,其分别指定页面组件以及页面的存储路径。默认情况下其分别指向Prometheus当前安装路径的<code>console_libraries</code>和<code>consoles</code>目录。</p>
+<p>Prometheus在<code>console_libraries</code>目录中已经内置了一些基本的界面组件，用户可以直接使用。</p>
+<p>在<code>consoles</code>目录下创建index.html文件后，刷新Prometheus界面可以看到在顶部菜单中多了一个Consoles菜单项，如下所示。该选项默认指向<code>consoles/index.html</code>文件：</p>
+<p><img alt="Consoles菜单" src="../static/consoles_index.png" /></p>
+<p>当然，这个时候点击该菜单，我们会看到一个空白页。因为目前index.html文件中还未填充任何内容：</p>
+<h2 id="_2">定义页面菜单</h2>
+<p>首先，我们先直接使用console_libraries中定义的<code>head</code>组件，并加入到index.html文件中：</p>
+<pre><code>{{template &quot;head&quot; .}}
+</code></pre>
+<p>此时，如果我们刷新浏览器可以看到以下内容：</p>
+<p><img alt="默认的Head组件" src="../static/head.png" /></p>
+<p><code>head</code>组件的定义，读者可以通过关键字<code>define "head"</code>在console_libraries目录中查找。默认其应该是定义在<code>prom.lib</code>文件中：</p>
+<pre><code class="language-go">{{ define &quot;head&quot; }}
+&lt;html&gt;
+&lt;head&gt;
+{{ template &quot;prom_console_head&quot; }}
+&lt;/head&gt;
+&lt;body&gt;
+{{ template &quot;navbar&quot; . }}
+{{ end }}
+</code></pre>
+<p>如果需要定制化菜单的内容，那一样的读者只需要找到<code>navbar</code>组件的定义即可。当然用户也可以创建自己的组件。 例如，如果我们希望Console Template页面的菜单与Prometheus UI一致，只需要修改navbar组件的定义即可，找到<code>menu.lib</code>并修改navbar组件:</p>
+<pre><code>{{ define &quot;navbar&quot; }}
+&lt;nav class=&quot;navbar navbar-inverse navbar-static-top&quot;&gt;
+  &lt;div class=&quot;container-fluid&quot;&gt;
+    &lt;!-- Brand and toggle get grouped for better mobile display --&gt;
+    &lt;div class=&quot;navbar-header&quot;&gt;
+      &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#bs-example-navbar-collapse-1&quot;&gt;
+        &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
+        &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;a class=&quot;navbar-brand&quot; href=&quot;{{ pathPrefix }}/&quot;&gt;Prometheus&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;bs-example-navbar-collapse-1&quot;&gt;
+      &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;{{ pathPrefix }}/alerts&quot;&gt;Alerts&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;{{ pathPrefix }}/graph&quot;&gt;Graph&lt;/a&gt;&lt;/li&gt;
+      &lt;/div&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+{{ end }}
+</code></pre>
+<p>如果不需要侧边菜单栏，直接在head组件中移除<code>{{ template "menu" . }}</code>部分即可，修改后刷新页面，如下所示：</p>
+<p><img alt="自定义菜单" src="../static/custom_index_head.png" /></p>
+<p>无论是<code>.lib</code>文件还是<code>.html</code>文件均使用了Go Template的语言，感兴趣的读者可以自行在Go语言官网了解更多内容<code>https://golang.org/pkg/text/template/</code></p>
+<h2 id="_3">定义图表</h2>
+<p>在Console Template中我们可以在页面中使用内置的<code>PromConsole.Graph()</code>函数，该函数通过<code>head</code>加载相应的js源码，在该函数中，通过指定特定的DOM节点以及相应的PromQL表达式，即可在特定区域图形化显示相应的图表内容，如下所示：</p>
+<pre><code>&lt;h1&gt;Prometheus HTTP Request Rate&lt;/h1&gt;
+
+&lt;h3&gt;Queries&lt;/h3&gt;
+&lt;div id=&quot;queryGraph&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+new PromConsole.Graph({
+  node: document.querySelector(&quot;#queryGraph&quot;),
+  expr: &quot;sum(rate(prometheus_http_request_duration_seconds_count{job='prometheus'}[5m]))&quot;,
+  name: &quot;Queries&quot;,
+  yAxisFormatter: PromConsole.NumberFormatter.humanizeNoSmallPrefix,
+  yHoverFormatter: PromConsole.NumberFormatter.humanizeNoSmallPrefix,
+  yUnits: &quot;/s&quot;,
+  yTitle: &quot;Queries&quot;
+})
+&lt;/script&gt;
+</code></pre>
+<p>这里创建了一个id为queryGraph的div节点，通过在页面中使用PromConsole.Graph函数，我们可以绘制出表达式<code>sum(rate(prometheus_http_request_duration_seconds_count{job='prometheus'}[5m]))</code>的可视化图表如下所示：</p>
+<p><img alt="" src="../static/query_graph.png" /></p>
+<p>除了最基本的node以及expr参数以外，该函数还支持的完整参数如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>expr</td>
+<td>Required. Expression to graph. Can be a list.</td>
+</tr>
+<tr>
+<td>node</td>
+<td>Required. DOM node to render into.</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>Optional. Duration of the graph. Defaults to 1 hour.</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>Optional. Unixtime the graph ends at. Defaults to now.</td>
+</tr>
+<tr>
+<td>width</td>
+<td>Optional. Width of the graph, excluding titles. Defaults to auto-detection.</td>
+</tr>
+<tr>
+<td>height</td>
+<td>Optional. Height of the graph, excluding titles and legends. Defaults to 200 pixels.</td>
+</tr>
+<tr>
+<td>min</td>
+<td>Optional. Minimum x-axis value. Defaults to lowest data value.</td>
+</tr>
+<tr>
+<td>max</td>
+<td>Optional. Maximum y-axis value. Defaults to highest data value.</td>
+</tr>
+<tr>
+<td>renderer</td>
+<td>Optional. Type of graph. Options are line and area (stacked graph). Defaults to line.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Optional. Title of plots in legend and hover detail. If passed a string, [[ label ]] will be substituted with the label value. If passed a function, it will be passed a map of labels and should return the name as a string. Can be a list.</td>
+</tr>
+<tr>
+<td>xTitle</td>
+<td>Optional. Title of the x-axis. Defaults to Time.</td>
+</tr>
+<tr>
+<td>yUnits</td>
+<td>Optional. Units of the y-axis. Defaults to empty.</td>
+</tr>
+<tr>
+<td>yTitle</td>
+<td>Optional. Title of the y-axis. Defaults to empty.</td>
+</tr>
+<tr>
+<td>yAxisFormatter</td>
+<td>Optional. Number formatter for the y-axis. Defaults to PromConsole.NumberFormatter.humanize.</td>
+</tr>
+<tr>
+<td>yHoverFormatter</td>
+<td>Optional. Number formatter for the hover detail. Defaults to PromConsole.NumberFormatter.humanizeExact.</td>
+</tr>
+<tr>
+<td>colorScheme</td>
+<td>Optional. Color scheme to be used by the plots. Can be either a list of hex color codes or one of the color scheme names supported by Rickshaw. Defaults to 'colorwheel'.</td>
+</tr>
+</tbody>
+</table>
+<p>需要注意的是，如果参数<code>expr</code>和<code>name</code>均是list类型，其必须是一一对应的。</p>
+<p>除了直接使用<code>PromConsole.Graph</code>函数显示可视化图表以外，在Console Template中还可以使用模板组件<code>prom_query_drilldown</code>定义一个连接直接跳转到Graph页面，并显示相应表达式的查询结果， 如下所示：</p>
+<pre><code>&lt;h3&gt;Links&lt;/h3&gt;
+{{ template &quot;prom_query_drilldown&quot; (args &quot;prometheus_http_response_size_bytes_bucket&quot;) }}
+</code></pre>
+<p>除了以上部分以外，我们也可以和原生Prometheus UI一样定义一个时间轴控制器，方便用户按需查询数据：</p>
+<p><img alt="" src="../static/prom_graph_timecontrol.png" /></p>
+<p>加入这个时间轴控制器的方式也很简单，直接引用以下模板即可：</p>
+<pre><code>{{ template &quot;prom_graph_timecontrol&quot; . }}
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+    
+  </body>
+</html>
