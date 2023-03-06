@@ -1,0 +1,16 @@
+site_name: Learn Python
+
+site_url: https://LearnPython.com/
+nav:
+    - Home: index.md
+    - About: about.md
+    - License: license.md
+    - LearnPython:
+        - LangIntroduce: python_base/language_introduce.md
+        - FirstCode: python_base/first_python_program.md
+        - DateType: python_base/datatype.md
+        - ControlStruct: python_base/control_struct.md
+        - Function:  python_base/function.md
+        - Class:  python_base/class.md
+
+theme: readthedocs
