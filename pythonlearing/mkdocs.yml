@@ -1,0 +1,21 @@
+site_name: Python 学习教程
+theme:
+    name: material
+    font:
+        text: Roboto
+        palette:
+            primary: indigo
+        # icon:
+        #   logo: bootstrap/envelope-paper
+        highlightjs: true
+        hljs_languages:
+            - yaml
+            - rust
+            - shell
+            - python
+            - bash
+
+nav:
+    # - Home: index.md
+    - 基础: base_content/whatispython.md
+    - 项目部署: deploy_step/deploy.md
