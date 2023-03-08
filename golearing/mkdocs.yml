@@ -1,0 +1,41 @@
+site_name: Golang Learing
+
+theme:
+    name: material
+    logo: assets/golang.png
+    favicon: assets/golang.png
+    font:
+      text: Roboto
+    palette:
+      primary: indigo
+    # icon:
+    #   logo: bootstrap/envelope-paper
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - rust
+        - bash
+        - golang
+        - python
+plugins:
+    - search:
+        lang:
+            - en
+            - ja
+        separator: '[\s\-\.]+'
+    # - social:
+    #     cards_font: Roboto
+nav:
+    # - Home: index.md
+    # - About: about.md
+    - 目录: index.md
+    - 第1章 初识Go语言: 
+      - 1.1 语言简史:  first/language.md
+      - 1.2 语言特性: first/special.md
+    - 第2章 Golang基础: 
+      - 2.1 Golang简介: base/introduce.md
+      - 2.2 常量和变量: base/var_and_const.md
+      - 2.3 基本数据类型: base/data_type.md
+      - 2.4 复合数据类型: base/complex_data_type.md
+      - 2.5 控制结构: base/control_strct.md
+      - 2.6 函数: base/function.md
