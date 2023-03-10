@@ -11,3 +11,4 @@
 9. 前后端一体化框架django-vue3-cli
 10. 其他
 11. python GUI tkinter 
+12. 架构设计

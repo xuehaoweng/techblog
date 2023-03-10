@@ -1,22 +1,29 @@
 # 数据库学习
 
 ## MongoDb
+
+```
+
+可视化、Pymongo版本差异、基础使用方法
+
+```
+
 ## MySQL
+
+```
+docker 启动
+
+数据导入、表结构导入
+
+数据库主从、数据库高可用建设
+
+```
 ## Redis
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+```
+持久化、做celery的消息队列
 
-## Commands
+```
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
 
