@@ -1,0 +1,733 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../complex_data_type/">
+      
+      
+        <link rel="next" href="../function/">
+      
+      <link rel="icon" href="../../assets/golang.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.15">
+    
+    
+      
+        <title>2.5 控制结构 - Golang Learing</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.113286f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Golang Learing" class="md-header__button md-logo" aria-label="Golang Learing" data-md-component="logo">
+      
+  <img src="../../assets/golang.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Golang Learing
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.5 控制结构
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Golang Learing" class="md-nav__button md-logo" aria-label="Golang Learing" data-md-component="logo">
+      
+  <img src="../../assets/golang.png" alt="logo">
+
+    </a>
+    Golang Learing
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        目录
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          第1章 初识Go语言
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          第1章 初识Go语言
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../first/language/" class="md-nav__link">
+        1.1 语言简史
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../first/special/" class="md-nav__link">
+        1.2 语言特性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          第2章 Golang基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          第2章 Golang基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduce/" class="md-nav__link">
+        2.1 Golang简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../var_and_const/" class="md-nav__link">
+        2.2 常量和变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_type/" class="md-nav__link">
+        2.3 基本数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complex_data_type/" class="md-nav__link">
+        2.4 复合数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.5 控制结构
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2.5 控制结构
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    if 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    switch 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for" class="md-nav__link">
+    for 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    标签和跳转
+  </a>
+  
+    <nav class="md-nav" aria-label="标签和跳转">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#goto" class="md-nav__link">
+    goto
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break" class="md-nav__link">
+    break
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue" class="md-nav__link">
+    continue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return" class="md-nav__link">
+    return 和函数调用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../function/" class="md-nav__link">
+        2.6 函数
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    if 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    switch 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for" class="md-nav__link">
+    for 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    标签和跳转
+  </a>
+  
+    <nav class="md-nav" aria-label="标签和跳转">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#goto" class="md-nav__link">
+    goto
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break" class="md-nav__link">
+    break
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue" class="md-nav__link">
+    continue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return" class="md-nav__link">
+    return 和函数调用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">控制结构</h1>
+<p>程序执行从本质上来说就是两种模式: 顺序和跳转</p>
+<ul>
+<li>顺序就是按照程序指令在存储器上的存放顺序逐条执行</li>
+<li>跳转就是遇到跳转指令就跳转到某处继续线性执行</li>
+</ul>
+<h2 id="if">if 语句</h2>
+<ol>
+<li>if 语句后面的条件判断子句不需要用小括号</li>
+<li>{必须放在行尾，和 if 或 if else 放在一行</li>
+<li>if 后面可以带简单的初始化语句，分号分隔，该简单语句声明的变量作用域整个 if 语句块，包括后面的 if else 或者 else 分支</li>
+<li>go 语言没有条件运算符</li>
+<li>if 分支语句遇到 return 后直接返回</li>
+</ol>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    x := 1
+    y := 10
+    if x &lt; y {
+        fmt.Println(&quot;if简单语句执行成功&quot;)
+    }
+    if z := 101; z &gt; y {
+        fmt.Println(&quot;if初始化语句声明变量z&quot;)
+    }
+}
+
+</code></pre>
+<h2 id="switch">switch 语句</h2>
+<p>switch 语句会根据传入的参数检测并执行符合条件的分支</p>
+<p>其他特点和 if 语句基本一致</p>
+<p>支持 default 语句</p>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    score := 85
+    switch {
+    case score &gt;= 90:
+        fmt.Println(&quot;90分以上得分A&quot;)
+    case score &gt;= 80:
+        fmt.Println(&quot;80分以上得分B&quot;)
+    case score &gt;= 70:
+        fmt.Println(&quot;70分以上得分C&quot;)
+    }
+}
+
+
+</code></pre>
+<h2 id="for">for 语句</h2>
+<p>for 循环语句</p>
+<p>支持对数组、切片、字符串、map 和通道的访问</p>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func funcDemo(args ...int) {
+    for i := 0; i &lt; len(args); i++ {
+        fmt.Println(i, args[i])
+    }
+    // range 默认返回两个值,下标和值类似python的enumerate
+    for index, value := range args {
+        fmt.Println(index, value)
+    }
+    // for 循环后面为空则表示死循环
+    //for {
+    //
+    //}
+
+    //对于 map 类型来说，for range 遍历时，key 和 value 分别代表 map 的索引键 key 和索引对应的值，
+    //一般被称为 map 的键值对，因为它们是一对一对出现的，下面的代码演示了如何遍历 map。
+    m := map[string]int{
+        &quot;hello&quot;: 100,
+        &quot;world&quot;: 200,
+    }
+    for key, value := range m {
+        fmt.Println(key, value)
+    }
+}
+func main() {
+    funcDemo(1, 2, 3)
+    //fmt.Println(key, value)
+}
+
+</code></pre>
+<h2 id="_2">标签和跳转</h2>
+<p>goto、break、continue</p>
+<p>go 语言使用标签 Label 来标识一个语句的位置、用于关键字跳转</p>
+<p>goto 用于函数的内部的跳转，需要配合标签一起使用</p>
+<h3 id="goto">goto</h3>
+<p><code>goto Label</code></p>
+<ul>
+<li>goto 只能在函数内跳转</li>
+<li>goto 不能跳过内部变量声明语句，这些变量在 goto 语句的标签语句处又是可见的</li>
+<li>goto 只能跳到统计作用域或者上层作用域，不能跳到内部作用域内的标签</li>
+</ul>
+<h3 id="break">break</h3>
+<p>用于函数内跳出 for、switch、select 语句的执行</p>
+<ul>
+<li>单独使用，直接跳出 for、switch、select 语句的执行</li>
+<li>配合 Label，用于跳出标签所标识的 for、switch、select 语句块的执行</li>
+</ul>
+<h3 id="continue">continue</h3>
+<p>用于跳出 for 循环的本次迭代，跳到下一次迭代的 post 语句处执行</p>
+<ul>
+<li>单独使用，用于跳出 for 循环的本次迭代</li>
+<li>配合 Label，用于跳出标签标识的 for 循环的本次迭代，标签和 continue 必须在同一个函数内</li>
+</ul>
+<h3 id="return">return 和函数调用</h3>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+    
+  </body>
+</html>
