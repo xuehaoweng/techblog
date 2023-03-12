@@ -1,16 +1,25 @@
-site_name: Learn Python
+site_name: 山南溪北Python学习路径
+
+theme:
+    name: material
 
 site_url: https://LearnPython.com/
+plugins:
+    - search:
+        lang:
+            - en
+            - ja
+        separator: '[\s\-\.]+'
 nav:
-    - Home: index.md
-    - About: about.md
+    - 首页: index.md
+    - 关于我: about.md
     - License: license.md
-    - LearnPython:
-        - LangIntroduce: python_base/language_introduce.md
-        - FirstCode: python_base/first_python_program.md
-        - DateType: python_base/datatype.md
-        - ControlStruct: python_base/control_struct.md
-        - Function:  python_base/function.md
-        - Class:  python_base/class.md
+    - 如何Python:
+        - 语言介绍: python_base/language_introduce.md
+        - 第一个Python程序: python_base/first_python_program.md
+        - 数据类型: python_base/datatype.md
+        - 控制结构: python_base/control_struct.md
+        - 函数:  python_base/function.md
+        - 类:  python_base/class.md
 
-theme: readthedocs
+# theme: readthedocs

@@ -1,17 +1,16 @@
-# Welcome to MkDocs
+# 山南溪北Python学习路径
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+关于山南溪北请查看: [山南溪北个人博客](http://124.221.181.241/).
 
-## Commands
+## 为什么写
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+1. 觉得学习的内容做个总结
+2. 技术点、框架、也要自我做个能力图谱的梳理
 
-## Project layout
+## 写点什么
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+1. 写自己学习的过程
+2. 学习过程的总结
+3. 日常解决问题的思路
+4. 如何做框架和结构设计
+5. 自定义库的设计
