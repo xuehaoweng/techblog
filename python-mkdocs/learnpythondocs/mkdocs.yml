@@ -4,8 +4,8 @@ theme:
     name: material
     font:
         text: Roboto
-    logo: /assets/flask-icon.png
-    favicon: /assets/flask-icon.png
+    logo: /assets/Python.png
+    favicon: /assets/Python.png
     palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
