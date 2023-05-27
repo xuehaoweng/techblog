@@ -1,0 +1,1621 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://LearnPython.com/python_web/python_django/">
+      
+      
+        <link rel="prev" href="../python_flask/quicklystart/">
+      
+      
+        <link rel="next" href="../python_fastapi/">
+      
+      <link rel="icon" href="/assets/Python.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.15">
+    
+    
+      
+        <title>Django简介 - 跟 "山南溪北" 学Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.113286f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#django" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="跟 &#34;山南溪北&#34; 学Python" class="md-header__button md-logo" aria-label="跟 "山南溪北" 学Python" data-md-component="logo">
+      
+  <img src="/assets/Python.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            跟 "山南溪北" 学Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Django简介
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="跟 &#34;山南溪北&#34; 学Python" class="md-nav__button md-logo" aria-label="跟 "山南溪北" 学Python" data-md-component="logo">
+      
+  <img src="/assets/Python.png" alt="logo">
+
+    </a>
+    跟 "山南溪北" 学Python
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about_me/" class="md-nav__link">
+        关于我
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Python基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Python基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_base/language_introduce/" class="md-nav__link">
+        语言介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_base/first_python_program/" class="md-nav__link">
+        第一个Python程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_base/datatype/" class="md-nav__link">
+        数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_base/control_struct/" class="md-nav__link">
+        控制结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_base/function/" class="md-nav__link">
+        函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_base/class/" class="md-nav__link">
+        类
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Python高级
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python高级
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_advance/object/" class="md-nav__link">
+        对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Python Web开发
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Python Web开发
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+          Python Flask
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Python Flask
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_flask/" class="md-nav__link">
+        Flask简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_flask/install_flask/" class="md-nav__link">
+        Flask安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_flask/quicklystart/" class="md-nav__link">
+        Flask快速开始
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          Python Django
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Python Django
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Django简介
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Django简介
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#django" class="md-nav__link">
+    Django是什么
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_1" class="md-nav__link">
+    Django的工作方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_2" class="md-nav__link">
+    Django框架的核心
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_3" class="md-nav__link">
+    Django的优缺点
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    设计理念¶
+  </a>
+  
+    <nav class="md-nav" aria-label="设计理念¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    总体¶
+  </a>
+  
+    <nav class="md-nav" aria-label="总体¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    松耦合¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    更少的代码¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    快速开发¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dry" class="md-nav__link">
+    不要重复地造轮子 (DRY)¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    明确优于隐式¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    一致性¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    模型¶
+  </a>
+  
+    <nav class="md-nav" aria-label="模型¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    明确优于隐式¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    包括所有相关领域逻辑¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    数据库API¶
+  </a>
+  
+    <nav class="md-nav" aria-label="数据库API¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    SQL效率¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    简洁, 强大的语法¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    当有必要时, 可方便地选择使用原始 SQL 语句¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    URL 设计¶
+  </a>
+  
+    <nav class="md-nav" aria-label="URL 设计¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    松耦合¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    无限的灵活性¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    鼓励最佳实践¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    定义URL¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    模板系统¶
+  </a>
+  
+    <nav class="md-nav" aria-label="模板系统¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    逻辑分离的解决方案¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    避免冗余¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    从 HTML 中解耦¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml" class="md-nav__link">
+    XML不应被用于模板语言¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    承担设计能力¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    更加直接的处理空格¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    不要发明一种编程语言¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    安全与保障¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    可扩展性¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    视图¶
+  </a>
+  
+    <nav class="md-nav" aria-label="视图¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    简洁¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    使用请求对象¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    松耦合¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-post" class="md-nav__link">
+    GET 方法和 POST 方法的区别¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    缓存框架¶
+  </a>
+  
+    <nav class="md-nav" aria-label="缓存框架¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    更少的代码¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    一致性¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    可扩展性¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+          Python FastApi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Python FastApi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_fastapi/" class="md-nav__link">
+        FastApi简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_fastapi/quicklystart/" class="md-nav__link">
+        FastApi快速开始
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#django" class="md-nav__link">
+    Django是什么
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_1" class="md-nav__link">
+    Django的工作方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_2" class="md-nav__link">
+    Django框架的核心
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_3" class="md-nav__link">
+    Django的优缺点
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    设计理念¶
+  </a>
+  
+    <nav class="md-nav" aria-label="设计理念¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    总体¶
+  </a>
+  
+    <nav class="md-nav" aria-label="总体¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    松耦合¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    更少的代码¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    快速开发¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dry" class="md-nav__link">
+    不要重复地造轮子 (DRY)¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    明确优于隐式¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    一致性¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    模型¶
+  </a>
+  
+    <nav class="md-nav" aria-label="模型¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    明确优于隐式¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    包括所有相关领域逻辑¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    数据库API¶
+  </a>
+  
+    <nav class="md-nav" aria-label="数据库API¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    SQL效率¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    简洁, 强大的语法¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    当有必要时, 可方便地选择使用原始 SQL 语句¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    URL 设计¶
+  </a>
+  
+    <nav class="md-nav" aria-label="URL 设计¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    松耦合¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    无限的灵活性¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    鼓励最佳实践¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    定义URL¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    模板系统¶
+  </a>
+  
+    <nav class="md-nav" aria-label="模板系统¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    逻辑分离的解决方案¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    避免冗余¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    从 HTML 中解耦¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml" class="md-nav__link">
+    XML不应被用于模板语言¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    承担设计能力¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    更加直接的处理空格¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    不要发明一种编程语言¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    安全与保障¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    可扩展性¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    视图¶
+  </a>
+  
+    <nav class="md-nav" aria-label="视图¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    简洁¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    使用请求对象¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    松耦合¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-post" class="md-nav__link">
+    GET 方法和 POST 方法的区别¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    缓存框架¶
+  </a>
+  
+    <nav class="md-nav" aria-label="缓存框架¶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    更少的代码¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    一致性¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    可扩展性¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Django简介</h1>
+
+<h2 id="django">Django是什么</h2>
+<p>Django是一个开放源代码的Web应用框架，由Python写成。采用了MTV的框架模式，即模型M，视图V和模版T。它最初是被开发来用于管理劳伦斯出版集团旗下的一些以新闻内容为主的网站的，即是CMS（内容管理系统）软件。并于2005年7月在BSD许可证下发布。这套框架是以比利时的吉普赛爵士吉他手Django Reinhardt来命名的。2019年12月2日，Django 3. 0发布 [1]  。</p>
+<p>Django 最初被设计用于具有快速开发需求的新闻类站点，目的是要实现简单快捷的网站开发</p>
+<p>Django是基于python的一个Web应用框架，与Flask框架不同的是，Django奉行"包含一切"的理念。该理念为创建Web应用所需的通用功能都应该包含到框架中，而不该存在独立的软件包中。例如：URL路由，对象关系映射(ORM)，数据库的迁移，模板系统以及身份验证等功能都已包含在框架中，虽然对于某些程序员来可能灵活度不太够，但却可以让你在构建网站的时候更加有效率。</p>
+<h2 id="django_1">Django的工作方式</h2>
+<p>Django是一个MVT框架，即模型M(Model)，视图V(View)和模版T(Template)。其架构模板看上去和MVC没太大区别。Django将MVC的视图进一步分解为Django视图和Django模板两个部分，分别用于“展现哪些数据”和“如何展现”，使得Django的模板在需要时可以随时替换，而不仅仅局限于内置的模板。MVC的控制器部分，由Django框架的URL来实现，</p>
+<p>MVT模型如下：</p>
+<p><img alt="" src="https://www.runoob.com/wp-content/uploads/2020/05/MTV-Diagram.png" /></p>
+<p>具体流程如下：</p>
+<ol>
+<li>浏览器首先执行Http Request</li>
+<li>Django把请求根据URL分配到相应的View视图</li>
+<li>View进行数据库的操作或其他运算</li>
+<li>View将数据发送到Template进行渲染，并返回Http Respose响应内容</li>
+<li>浏览器根据Http Respose响应渲染出网页内容</li>
+</ol>
+<p>用户操作流程:</p>
+<p><img alt="" src="https://www.runoob.com/wp-content/uploads/2020/05/1589777036-2760-fs1oSv4dOWAwC5yW.png" /></p>
+<h2 id="django_2">Django框架的核心</h2>
+<p>包括：一个面向对象的映射器（ORM），用作数据模型和关系性数据库间的媒介；一个基于正则表达式的URL分发器；一个视图系统，用于处理请求；以及一个模板系统。除此之外还包含：</p>
+<ol>
+<li>一个轻量级的、独立的Web服务器，用于开发和测试</li>
+<li>中间件支持，允许对请求处理的各个阶段进行干涉</li>
+<li>一个表单序列化及验证系统，用于HTML表单和适于数据库存储的数据之间的转换</li>
+<li>防止跨站请求伪造（cross-site request forgery）的工具</li>
+<li>一个缓存框架，并有几种缓存方式可供选择等</li>
+</ol>
+<h2 id="django_3">Django的优缺点</h2>
+<p>【Django的优点】</p>
+<ol>
+<li>
+<p>功能完善、要素齐全：自带大量常用工具和框架（比如分页，auth，权限管理), 适合快速开发企业级网站
+完善的文档：经过十多年的发展和完善，Django有广泛的实践案例和完善的在线文档。开发者遇到问题时可以搜索在线文档寻求解决方案</p>
+</li>
+<li>
+<p>强大的数据库访问组件：Django的Model层自带数据库ORM组件，使得开发者无须学习SQL语言即可对数据库进行操作</p>
+</li>
+<li>
+<p>Django先进的App设计理念: App是可插拔的，是不可多得的思想。不需要了，可以直接删除，对系统整体影响不大</p>
+</li>
+<li>
+<p>自带台管理系统admin：只需要通过简单的几行配置和代码就可以实现一个完整的后台数据管理控制平台</p>
+</li>
+<li>
+<p>Django debug信息详尽: 很容易找出代码错误所在</p>
+</li>
+</ol>
+<p>【Django的缺点】</p>
+<ol>
+<li>大包大揽: 对于一些轻量级应用不需要的功能模块Django也包括了，不如Flask轻便</li>
+<li>过度封装: 很多类和方法都封装了，直接使用比较简单，但改动起来就比较困难</li>
+<li>性能劣势: 与C, C++性能上相比，Django性能偏低，当然这是python的问题，其它python框架在流量上来后会有同样问题</li>
+<li>模板问题: django的模板实现了代码和样式完全分离，不允许模板里出现python代码，灵活度对某些程序员来说可能不够</li>
+</ol>
+<h2 id="_1">设计理念¶</h2>
+<p>本文档解释了 Django 开发人员在开发 Django 时使用的一些基本哲学， 它的目标是解释过去并指导未来</p>
+<h3 id="_2">总体¶</h3>
+<h4 id="_3">松耦合¶</h4>
+<p>Django 栈的基本目标是 低耦合高内聚。框架里的不同层（Layers）不应该知道对方的代码，除非它们确实需要。</p>
+<p>例如，模板系统不需要知道用户的 Web 请求，数据库层不需要了解视图层，而视图层并不关心程序员所使用的模板系统。</p>
+<p>尽管为了方便 Django 带有一个完整的堆栈，但堆栈的各个部分尽可能独立于另一个堆栈。</p>
+<h4 id="_4">更少的代码¶</h4>
+<p>Django 应用的代码应该尽可能地精简，Django 应该充分利用 Python 的动态能力，比如自省机制（introspection）。</p>
+<h4 id="_5">快速开发¶</h4>
+<p>在 21 世纪，Web 框架的核心一点是让 Web 开发中枯燥的事情处理得更加快速，Django 可以做到快速的 Web 开发。</p>
+<h4 id="dry">不要重复地造轮子 (DRY)¶</h4>
+<p>每个独特的概念或数据片应该存在且只存在于一个地方。避免冗余，做好标准化。</p>
+<p>合理的框架应该从尽可能少的信息中推断出尽可能多的需求。</p>
+<h4 id="_6">明确优于隐式¶</h4>
+<p>这是在 PEP 20 列出的核心 Python 原则，这意味着 Django 不应该使用太多的“魔术”。除非有一个很好的理由，否则不应该出现魔术。只有当魔术创造了巨大的便利，并且使用其他方式难以实现时，它才值得使用，而且它的实现方式并不会让试图学习如何使用该功能的开发人员感到困惑。</p>
+<h4 id="_7">一致性¶</h4>
+<p>框架应在所有层级上保持一致。一致性适用于从低级（Python 的编码风格）到高级（使用 Django 的“经验”）的所有内容。</p>
+<h3 id="_8">模型¶</h3>
+<h4 id="_9">明确优于隐式¶</h4>
+<p>字段不应该仅仅根据字段的名称来假定某些行为。这需要对系统有太多了解，并且容易出现错误。相反，其行为应该基于关键字参数，并且在某些情况下，应该基于字段的类型。</p>
+<h4 id="_10">包括所有相关领域逻辑¶</h4>
+<p>模型应该封装一个“对象”的各个方面，遵循 Martin Fowler 的 Active Record 设计模式。</p>
+<p>这就是为什么在模型类中要同时定义一个模型表现的数据以及关于它的信息（包括其人类可读的名称，默认排序等选项）；所有用于理解给定模型所需的信息都应该存储在模型中。</p>
+<h3 id="api">数据库API¶</h3>
+<p>数据库API的主要用处：</p>
+<h4 id="sql">SQL效率¶</h4>
+<p>应该尽可能少地执行SQL语句，并且应该在内部优化语句。</p>
+<p>这就是为什么开发者需要显式地调用 save()，而不是由框架静默地在幕后保存东西。</p>
+<p>这也是为什么 select_related() QuerySet 方法存在的原因。在查询“每个关联的对象”的常见情况下，它是一个可选的性能提升器。</p>
+<h4 id="_11">简洁, 强大的语法¶</h4>
+<p>数据库 API 应该允许用尽可能少的语法，来表达丰富、达意的语句。它不应该依赖于导入其他模块或辅助对象。</p>
+<p>当必要时, 在幕后插入应该是自动进行的.</p>
+<p>每一个对象都应该能够访问所有相关的对象, 系统范围. 这种访问应该是双向的.</p>
+<h4 id="sql_1">当有必要时, 可方便地选择使用原始 SQL 语句¶</h4>
+<p>应该认识到数据库 API 只是一个便捷的方法，但并不必须是最终的全部手段。框架应该可以很容易地编写自定义的 SQL——完整的语句，或者仅仅是自定义 WHERE 子句作为 API 调用时的自定义参数。</p>
+<h3 id="url">URL 设计¶</h3>
+<h4 id="_12">松耦合¶</h4>
+<p>Django 应用中的 URL 不应该与底层 Python 代码耦合。将 URL 与 Python 函数名联系起来是一件很糟糕且丑陋的做法。</p>
+<p>按照这些方法，Django URL 系统应该允许同一应用的 URL 在不同的上下文中有所不同。例如，一个网站可以在 /stories/ 中放置故事，而另一个网站则可以使用 /news/。</p>
+<h4 id="_13">无限的灵活性¶</h4>
+<p>URL 应该尽可能灵活。任何可想到的 URL 设计都应该被允许。</p>
+<h4 id="_14">鼓励最佳实践¶</h4>
+<p>框架可以做到让开发者简单（或更加简单）地设计出漂亮的，而不是难看的 URL。</p>
+<p>在 URL 中应避免出现文件后缀名。</p>
+<p>在 URL 中使用 Vignette 式的逗号应该受到严厉的惩罚。</p>
+<h4 id="url_1">定义URL¶</h4>
+<p>技术上，foo.com/bar 和 foo.com/bar/ 是两条不同的 URL，搜索引擎爬虫（以及某些 Web 流量分析工具）会将其视为独立的页面。Django 会将其转为 "标准" 的 URL，让搜索引擎爬虫正确识别。</p>
+<p>详细请参考 APPEND_SLASH 配置。</p>
+<blockquote>
+<p>默认： True,当设置为 True 时，如果请求的 URL 不符合 URLconf 中的任何模式，并且不以斜线结尾，则会发出一个 HTTP 重定向到相同的URL，并附加一个斜线。注意，重定向可能会导致 POST 请求中提交的任何数据丢失。APPEND_SLASH 的配置只有在安装了 CommonMiddleware 的情况下才会使用</p>
+</blockquote>
+<h3 id="_15">模板系统¶</h3>
+<h4 id="_16">逻辑分离的解决方案¶</h4>
+<p>我们将模板系统看作一个工具，用于控制表现方式和表示方式相关的逻辑。模板系统不应该支持超出这个基本目标的功能。</p>
+<h4 id="_17">避免冗余¶</h4>
+<p>大多数动态网站会使用一些网站整体通用的设计——一个通用的页眉、页脚、导航栏，等等。Django 模板系统应该可以很容易地将这些元素存储在一个地方，从而减少重复的代码。</p>
+<p>这是 模板继承 背后的理念。</p>
+<h4 id="html">从 HTML 中解耦¶</h4>
+<p>模板系统不应该被设计成只能输出 HTML。它应该同样擅长生成其他基于文本的格式，或者仅仅是纯文本。</p>
+<h4 id="xml">XML不应被用于模板语言¶</h4>
+<p>使用 XML 引擎去解析模板会在编辑模板的过程中引入很多人为错误，并在模板处理中导致不可接受的开销。</p>
+<h4 id="_18">承担设计能力¶</h4>
+<p>模板系统不应该有的设计是，使得模板可以在WYSIWYG（所见即所得）编辑器中也能显示得很好，比如 Dreamweaver。因为这是一个非常严重的限制，会让模板的语法不够好。Django 期望模板编写者有能力直接编辑 HTML 文本。</p>
+<h4 id="_19">更加直接的处理空格¶</h4>
+<p>模板系统不应该用空白符来做神奇的事情。如果模板包含空白符，系统应该在处理文本时处理空格——只是显示它。任何不在模板标签中的空白符都应该显示出来。</p>
+<h4 id="_20">不要发明一种编程语言¶</h4>
+<p>模板系统的目标不是发明一种编程语言。它的目标是提供足够的具有编程风格的功能，比如分支和循环，这对于做出表现相关的决策是至关重要的。Django 模板语言（DTL） 旨在避免高级逻辑。</p>
+<p>Django 模板系统认为模板通常是由 设计师 编写的，而不是 程序员，因此不应该假设他了解 Python。</p>
+<h4 id="_21">安全与保障¶</h4>
+<p>开箱即用的模板系统禁止包含恶意代码，例如删除数据库记录的代码。</p>
+<p>这就是模板系统不允许有任意Python代码的另一个原因。</p>
+<h4 id="_22">可扩展性¶</h4>
+<p>模板系统应该认识到, 高阶的模板作者可能想扩展它.</p>
+<p>这是自定义的模板标签和过滤器背后的理念.</p>
+<h3 id="_23">视图¶</h3>
+<h4 id="_24">简洁¶</h4>
+<p>编写视图应该和编写 Python 函数一样简单。开发人员不应该在函数执行时实例化一个类。</p>
+<h4 id="_25">使用请求对象¶</h4>
+<p>视图应该能够访问一个请求对象——一个储存关于当前请求的元数据的对象。对象应该直接传递给视图函数，而不是必须从全局变量访问请求数据的视图函数。这使得通过传入“假”请求对象来测试视图变得轻松、干净和容易。</p>
+<h4 id="_26">松耦合¶</h4>
+<p>视图不应该关心开发人员使用哪种模板——甚至根本不用模板系统。</p>
+<h4 id="get-post">GET 方法和 POST 方法的区别¶</h4>
+<p>GET 和 POST 是不同的；开发人员应该明确地使用其中一个或另一个。框架应该使得 GET 和 POST 数据很容易区分。</p>
+<h3 id="_27">缓存框架¶</h3>
+<p>缓存框架 的核心目的是：</p>
+<h4 id="_28">更少的代码¶</h4>
+<p>缓存应该尽可能快。因此，围绕缓存后端的所有框架代码都应该保持在绝对的最小值，特别是对于 get() 操作。</p>
+<h4 id="_29">一致性¶</h4>
+<p>缓存 API 应该为不同的缓存后端提供一致的接口。</p>
+<h4 id="_30">可扩展性¶</h4>
+<p>缓存 API 应该基于开发者的需求，在应用程序级别上是可扩展的（</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "navigation.expand", "search.share"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+    
+  </body>
+</html>

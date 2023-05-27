@@ -102,5 +102,6 @@ nav:
           - Django简介: python_web/python_django/index.md
         - Python FastApi:
           - FastApi简介: python_web/python_fastapi/index.md
+          - FastApi快速开始: python_web/python_fastapi/quicklystart.md
 
 # theme: readthedocs
