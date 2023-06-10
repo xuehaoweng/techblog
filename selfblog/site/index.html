@@ -27,7 +27,7 @@
     
     
       
-        <title>我 - xhweng 的个人博客</title>
+        <title>我的介绍 - xhweng 的个人博客</title>
       
     
     
@@ -49,6 +49,10 @@
         <style>:root{--md-text-font:"Noto Serif";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="assets/view-bigimg.css">
+    
+      <link rel="stylesheet" href="assets/extra.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -103,9 +107,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="xhweng 的个人博客" class="md-header__button md-logo" aria-label="xhweng 的个人博客" data-md-component="logo">
       
@@ -125,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              我
+              我的介绍
             
           </span>
         </div>
@@ -209,6 +211,29 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="." class="md-tabs__link md-tabs__link--active">
+      我的介绍
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -221,8 +246,10 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="." title="xhweng 的个人博客" class="md-nav__button md-logo" aria-label="xhweng 的个人博客" data-md-component="logo">
       
@@ -252,12 +279,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          我
+          我的介绍
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
-        我
+        我的介绍
       </a>
       
         
@@ -292,6 +319,13 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     联系方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    跟我学
   </a>
   
 </li>
@@ -351,6 +385,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    跟我学
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -365,7 +406,28 @@
                 
     
         
-        <h1 id="_1">欢迎来到我的个人博客</h1>
+         <!-- 添加阅读量 -->
+    <div style="float:right">
+        <span id="busuanzi_container_page_pv">
+            <font size="2" color="grey">本文总阅读量
+                <span id="busuanzi_value_page_pv"></span>次
+            </font>
+        </span>
+    </div>
+        <style>
+    .md-typeset .cover {
+        display: none;
+    }
+    .md-typeset .cover + hr {
+        display: none;
+    }
+    .md-typeset h1,
+    .md-typeset h2 {
+        color: navy;
+    }
+</style>
+
+<h1 id="_1">欢迎来到我的个人博客</h1>
 <p>我是一个充满热情的程序员，一直在不断学习和成长。我拥有丰富的前后端全栈式开发和项目管理经验，能够独立完成各种平台的前后端建设工作。在这个博客里，我将分享我在编程、技术以及生活方面的所学所得，希望能够与大家共同进步。</p>
 <h2 id="_2">技能与专长</h2>
 <ul>
@@ -386,6 +448,7 @@
 <li>Gitee: <a href="https://github.com/xuehaoweng">你的Gitee地址</a></li>
 </ul>
 <p>期待与你共同探讨技术的世界！</p>
+<h2 id="_5">跟我学</h2>
 <p><a href='http://124.221.181.241/pydocs/'  target="_blank">跟我学Python</a></p>
 <p><a href='http://124.221.181.241/pydocs/'  target="_blank">跟我学Vue</a></p>
 <p><a href='http://124.221.181.241/pydocs/'  target="_blank">跟我学微服务</a></p>
@@ -520,10 +583,22 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "navigation.expand", "search.share"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "navigation.expand", "search.share"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+        <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      
+        <script src="assets/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="assets/view-bigimg.js"></script>
+      
+        <script src="assets/extra.js"></script>
       
     
   </body>

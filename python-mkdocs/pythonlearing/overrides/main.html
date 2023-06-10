@@ -1,0 +1,29 @@
+{% if page and page.meta and page.meta.author %}
+    {% set pgauthor = page.meta.author %}
+    {% set pgauthor_email = "mailto:" + page.meta.author_email %}
+{% endif %}
+
+<!-- base -->
+{% extends "base.html" %}
+
+<!-- format content -->
+{% block content %}
+    {% block page_content %}
+        {# the cover page #}
+         <!-- 添加阅读量 -->
+    <div style="float:right">
+        <span id="busuanzi_container_page_pv">
+            <font size="2" color="grey">本文总阅读量
+                <span id="busuanzi_value_page_pv"></span>次
+            </font>
+        </span>
+    </div>
+        {{ page.content }}
+        {% if pgauthor is defined %}
+        <p><small>
+            本文出至: <a href="{{ config.site_url }}">{{ config.site_name }} </a>
+            作者：<a href="{{ pgauthor_email }}">{{pgauthor}}</a>
+            </small></p>
+        {% endif %}   
+    {% endblock %}
+{% endblock %} 

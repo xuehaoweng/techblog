@@ -131,6 +131,7 @@ extra_css:
   - assets/view-bigimg.css
   - assets/extra.css
 extra_javascript:
+  - '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
   - assets/mathjax.js # must be before mathjax
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
