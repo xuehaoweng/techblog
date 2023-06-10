@@ -1,0 +1,30 @@
+site_name: PythonSourceCode
+
+theme:
+    name: material
+    logo: assets/logo.png
+    favicon: assets/logo.png
+    font:
+      text: Roboto
+    palette:
+      primary: indigo
+    # icon:
+    #   logo: bootstrap/envelope-paper
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - rust
+        - python
+
+plugins:
+    - search:
+        lang:
+            - en
+            - ja
+        separator: '[\s\-\.]+'
+    # - social:
+    #     cards_font: Roboto
+nav:
+    # - Home: index.md
+    # - About: about.md
+    - Python 总览: overview/index.md

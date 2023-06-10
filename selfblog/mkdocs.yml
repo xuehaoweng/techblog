@@ -1,11 +1,18 @@
-site_name: 山南溪北Go语言学习路径
+site_name: xhweng 的个人博客
+site_url: https://www.codeinsideout.com/ # must have the trailing slash
+site_author: xuehaoweng(xhwengteck@163.com)
+copyright: > # should remain a link to the original theme
+  &copy; xhweng blog
+  
 
 theme:
     name: material
-    logo: assets/golang.png
-    favicon: assets/golang.png
+    custom_dir: overrides 
+    logo: assets/favicon.png
+    favicon: assets/favicon.png
     font:
-      text: Roboto
+      text: Noto Serif
+      code: Roboto Mono
     palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -13,13 +20,13 @@ theme:
         icon: material//weather-sunny
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
-      primary: teal
+      primary: blue 
       scheme: slate
       toggle:
         icon: material/weather-night
         name: Switch to light mode
-    # icon:
-    #   logo: bootstrap/envelope-paper
+    icon:
+      logo: assets/favicon.png
     features: 
         - navigation.instant #- header.autohide  #自动隐藏
         #- announce.dismiss #呈现可标记为由用户读取的临时公告，可以包含一个用于取消当前公告的按钮
@@ -40,6 +47,7 @@ theme:
         - bash
         - python
         - golang
+
 icon:
     admonition:
       note: octicons/tag-16
@@ -86,14 +94,35 @@ plugins:
 nav:
     # - Home: index.md
     # - About: about.md
-    - 目录: index.md
-    - 第1章 初识Go语言: 
-      - 1.1 语言简史:  first/language.md
-      - 1.2 语言特性: first/special.md
-    - 第2章 Golang基础: 
-      - 2.1 Golang简介: base/introduce.md
-      - 2.2 常量和变量: base/var_and_const.md
-      - 2.3 基本数据类型: base/data_type.md
-      - 2.4 复合数据类型: base/complex_data_type.md
-      - 2.5 控制结构: base/control_strct.md
-      - 2.6 函数: base/function.md
+    - 我: index.md
+
+extra:
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/
+  analytics:
+    provider: google
+    property: G-144Q0VJMBT
+    # property: UA-42618265-2
+  
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#cookie-consent
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+  
+  disqus: "xuehaoweng-github-io"
+  
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/xuehaoweng
+      name: xuehaoweng
+    - icon: fontawesome/brands/facebook-f
+      link: https://facebook.com/trongvq
+      name: trongvq
+    - icon: fontawesome/brands/linkedin-in
+      link: https://www.linkedin.com/in/vqtrong
+      name: vqtrong
+  generator: false # hide the line "Made with Material for MkDocs"

@@ -1,0 +1,34 @@
+site_name: 山南溪北VUE学习路径
+theme:
+    name: material
+    logo: /assets/Vue.png
+    favicon: /assets/Vue.png
+    palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material//weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: teal
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+    font:
+        text: Roboto
+        # palette:
+        #     primary: indigo
+        # icon:
+        #   logo: bootstrap/envelope-paper
+        highlightjs: true
+        hljs_languages:
+            - yaml
+            - rust
+            - shell
+            - python
+            - bash
+
+nav:
+    # - Home: index.md
+    - 基础: base_content/whatisvue.md
