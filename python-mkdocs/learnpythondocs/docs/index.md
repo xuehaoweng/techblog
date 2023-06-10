@@ -1,3 +1,13 @@
+---
+title: 学Python   #设置该文档需要显示出来的标题
+description: 学Python
+author: xhweng
+author_email: xhwengteck@163.com
+# disqus: ""
+# hide:
+#     - navigation
+---
+
 # 山南溪北的博客
 
 欢迎来到山南溪北的技术和生活博客。
