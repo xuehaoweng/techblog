@@ -1,9 +1,25 @@
 ---
-title: 我   #设置该文档需要显示出来的标题
+title: 我的介绍   #设置该文档需要显示出来的标题
 description: 可以通过meta扩展为Mkdocs文档添加作者，该方法兼容在MkDocs的默认主题，和material主题。
 author: xhweng
 author_email: xhwengteck@163.com
+# disqus: ""
+# hide:
+#     - navigation
 ---
+
+<style>
+    .md-typeset .cover {
+        display: none;
+    }
+    .md-typeset .cover + hr {
+        display: none;
+    }
+    .md-typeset h1,
+    .md-typeset h2 {
+        color: navy;
+    }
+</style>
 
 # 欢迎来到我的个人博客
 
@@ -34,6 +50,8 @@ author_email: xhwengteck@163.com
 
 期待与你共同探讨技术的世界！
 
+## 跟我学
+
 
 <a href='http://124.221.181.241/pydocs/'  target="_blank">跟我学Python</a>
 
@@ -44,4 +62,3 @@ author_email: xhwengteck@163.com
 <a href='http://124.221.181.241/godocs/' target="_blank">跟我学Golang</a>
 
 <a href='http://124.221.181.241/prometheus/' target="_blank">跟我学Prometheus</a>
-
